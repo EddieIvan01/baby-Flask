@@ -35,5 +35,21 @@ def file_handler():
     return content
 
 
+@app.route('/admin', methods=('GET',))
+def admin_handler():
+    try:
+        u = session.get('u')
+        if isinstance(u, dict): 
+            u = b64decode(u.get('b'))
+        u = pickle.loads(u)
+    except Exception:
+        return 'uhh?'
+    
+    if u.is_admin == 1:
+        return 'welcome, admin'
+    else:
+        return 'who are you?'
+    
+
 if __name__ == '__main__':
     app.run('0.0.0.0', port=80, debug=False)
