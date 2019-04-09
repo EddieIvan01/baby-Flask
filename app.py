@@ -46,13 +46,13 @@ def admin_handler():
         if isinstance(u, dict): 
             u = b64decode(u.get('b'))
         u = pickle.loads(u)
+        
+        if u.is_admin == 1:
+            return 'welcome, admin'
+        else:
+            return 'who are you?'
     except Exception:
         return 'uhh?'
-    
-    if u.is_admin == 1:
-        return 'welcome, admin'
-    else:
-        return 'who are you?'
     
 
 if __name__ == '__main__':
