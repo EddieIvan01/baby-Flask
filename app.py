@@ -6,7 +6,10 @@ from base64 import b64decode
 from flask import Flask, request, render_template, session
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = os.getenv('secret_key')
+
+# add secret key to enable session
+# and this is a fake secret key, just an example
+app.config['SECRET_KEY'] = 'ADD_YOUR_SECRET_KEY_HERE'
 
 User = type('User', (object,), {
     'uname': 'test',
