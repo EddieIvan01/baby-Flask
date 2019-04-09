@@ -30,8 +30,8 @@ def index_handler():
 def file_handler():
     path = request.args.get('file')
     path = os.path.join('static', path)
-    if not os.path.exists(path) or '.py' in path \
-            or '.sh' in path or '..' in path:
+    if not os.path.exists(path) or os.path.isdir(path) \
+            or '.py' in path or '.sh' in path or '..' in path:
         return 'disallowed'
         
     with open(path, 'r') as fp:
