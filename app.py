@@ -6,6 +6,7 @@ from base64 import b64decode
 from flask import Flask, request, render_template, session
 
 app = Flask(__name__)
+app.config['SECRET_KEY'] = os.getenv('secret_key')
 
 User = type('User', (object,), {
     'uname': 'test',
